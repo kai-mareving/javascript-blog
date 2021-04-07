@@ -1,5 +1,4 @@
 <h1>Specyfikacja projektu</h1>
-<hr>
 
 <h3>Naszym celem będzie stworzenie strony, która składa się z:</h3>
 
