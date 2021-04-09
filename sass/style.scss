@@ -4,6 +4,7 @@
 
 $color-light: #fff;
 $color-dark: #444;
+$color-pink: #FAAFBE;
 
 $font-logo: 'Sacramento', cursive;
 $font-header: 'Oswald', sans-serif;
@@ -82,7 +83,7 @@ body {
   padding: 0;
   .active {
     font-weight: bold;
-    color: green;
+    color: $color-pink;
   }
 }
 
