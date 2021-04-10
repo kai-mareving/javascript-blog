@@ -47,13 +47,12 @@ const generateTitleLinks = function () {
     console.log('generateTitleLinks is working!' + '\n' + 'Our articles: ', articles);
     console.log('Article IDs: ', articleIdList);
     
-    /* delete the contents of the link list in the left column */
+    /* remove contents of titleList */
     /* then for each article: */
-    /* read its id and write it to a constant, (getAttribute)*/
-    // const articleId = 
-    /* find an element with a title and save its contents to a constant, (querySelector on article) */
-    /* based on this info, create HTML code for link and save it to a constant, */
-    /* insert this HTML code into the link list in the left column. */
+        /* get the article id (getAttribute)*/    
+        /* find the title element & get the title from the title element (querySelector on article) */
+        /* create HTML of the link & save it to a const */
+        /* insert link into titleList */
 }
 
 
