@@ -32,23 +32,27 @@ const titleClickHandler = function (event) {
 }
 
 /*** Generate title links ***/
-const articles = document.querySelectorAll('.posts article');
-const articleIdList = [];
-for (let article of articles) {
-    let articleId = article.getAttribute('id');
-    articleIdList.push(articleId);
-}
 
-const optArticleSelector = '.post',
-    optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles';
+const optArticleSelector = '.post', //article list
+optTitleSelector = '.post-title',
+optTitleListSelector = '.titles'; //link list
 
 const generateTitleLinks = function () {
-    console.log('generateTitleLinks is working!' + '\n' + 'Our articles: ', articles);
-    console.log('Article IDs: ', articleIdList);
+    console.log('generateTitleLinks is working!');
     
     /* remove contents of titleList */
+    const titleList = document.querySelector(optTitleListSelector);
+    titleList.innerHTML = '';
+    
     /* then for each article: */
+    const articles = document.querySelectorAll(optArticleSelector);
+    const articleIdList = [];
+    for (let article of articles) {
+        let articleId = article.getAttribute('id');
+        articleIdList.push(articleId);
+    }
+    console.log('Articles: ', articles);
+    console.log('articleIdList: ', articleIdList);
         /* get the article id (getAttribute)*/    
         /* find the title element & get the title from the title element (querySelector on article) */
         /* create HTML of the link & save it to a const */
