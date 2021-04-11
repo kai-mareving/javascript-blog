@@ -74,17 +74,16 @@ const generateTitleLinks = function () {
     // titleList.innerHTML = html;
     console.log('titleList: ', titleList);
     
+    /* NEBULA */
+    const links = document.querySelectorAll('.titles a');
+    for (let link of links) {
+        link.addEventListener('click', titleClickHandler);
+    }
 }
 
 
-
-/********** Action! **********/
 generateTitleLinks();
 
 /* it is important that the links are generated before you assign listeners to them, because otherwise, you'd assign listeners, remove the links, generate new ones - and they would't have the titleClickHandler function assigned to them */
 
-/* Code below will ultimately be placed at the end of generateTitleLinks() to be fired on each execution */
-const links = document.querySelectorAll('.titles a');
-for (let link of links) {
-    link.addEventListener('click', titleClickHandler);
-}
+/* NEBULA: Code below will ultimately be placed at the end of generateTitleLinks() to be fired on each execution */
