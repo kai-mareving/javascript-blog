@@ -5,7 +5,7 @@ const optArticleSelector = '.post', //article list
     optTitleSelector = '.post-title', //article title
     optTitleListSelector = '.titles'; //link list
 
-    
+
 const titleClickHandler = function (event) {
     event.preventDefault();
     const clickedElement = this;
@@ -34,7 +34,7 @@ const titleClickHandler = function (event) {
     /* [DONE] add class 'active' to the correct article */
     targetArticle.classList.add('active');
     console.log('targetArticle: ', targetArticle);
-}
+};
 
 
 const generateTitleLinks = function () {
@@ -43,7 +43,7 @@ const generateTitleLinks = function () {
     /* remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector);
     titleList.innerHTML = '';
-    
+
     /* then for each article: */
     const articles = document.querySelectorAll(optArticleSelector);
     // console.log('Articles: ', articles);
@@ -60,7 +60,7 @@ const generateTitleLinks = function () {
 
         // console.log('articleId: ', articleId);
         // console.log('ArticleTitle: ', articleTitle);
-        
+
         /* create HTML of the link & save it to a const */
         const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
         // console.log(linkHTML);
@@ -70,16 +70,16 @@ const generateTitleLinks = function () {
 
         /* insert link into titleList */
         titleList.insertAdjacentHTML('beforeend', linkHTML);
-    }  
+    }
     // titleList.innerHTML = html;
     console.log('titleList: ', titleList);
-    
+
     /* NEBULA */
     const links = document.querySelectorAll('.titles a');
     for (let link of links) {
         link.addEventListener('click', titleClickHandler);
     }
-}
+};
 
 
 generateTitleLinks();
