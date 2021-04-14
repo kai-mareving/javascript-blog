@@ -3,7 +3,8 @@
 /* generateTitleLinks() helper variables */
 const optArticleSelector = '.post', //article list
   optTitleSelector = '.post-title', //article title
-  optTitleListSelector = '.titles'; //link list
+  optTitleListSelector = '.titles', //link list
+  optArticleTagsSelector = '.post-tags .list'; //article tag list
 
 
 const titleClickHandler = function (event) {
@@ -87,3 +88,31 @@ generateTitleLinks();
 /* it is important that the links are generated before you assign listeners to them, because otherwise, you'd assign listeners, remove the links, generate new ones - and they would't have the titleClickHandler function assigned to them */
 
 /* NEBULA: Code below will ultimately be placed at the end of generateTitleLinks() to be fired on each execution */
+
+function generateTags(){
+  /* find all articles */
+
+  /* START LOOP: for every article: */
+
+    /* find tags wrapper */
+
+    /* make html variable with empty string */
+
+    /* get tags from data-tags attribute */
+
+    /* split tags into array */
+
+    /* START LOOP: for each tag */
+
+      /* generate HTML of the link */
+
+      /* add generated code to html variable */
+
+    /* END LOOP: for each tag */
+
+    /* insert HTML of all the links into the tags wrapper */
+
+  /* END LOOP: for every article: */
+}
+
+// generateTags();
