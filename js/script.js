@@ -1,6 +1,6 @@
 'use strict';
 
-/* generateTitleLinks() helper variables */
+/** GLOBAL **/
 const optArticleSelector = '.post', //article list
   optTitleSelector = '.post-title', //article title
   optTitleListSelector = '.titles', //link list
@@ -10,7 +10,7 @@ const optArticleSelector = '.post', //article list
 const titleClickHandler = function (event) {
   event.preventDefault();
   const clickedElement = this;
-  console.log('clickedElement:', clickedElement);
+  // console.log('clickedElement:', clickedElement);
 
   /* [DONE] remove class 'active' from all article links  */
   const activeLinks = document.querySelectorAll('.titles a.active');
@@ -34,7 +34,7 @@ const titleClickHandler = function (event) {
 
   /* [DONE] add class 'active' to the correct article */
   targetArticle.classList.add('active');
-  console.log('targetArticle: ', targetArticle);
+  // console.log('targetArticle: ', targetArticle);
 };
 
 
@@ -73,7 +73,7 @@ const generateTitleLinks = function () {
     titleList.insertAdjacentHTML('beforeend', linkHTML);
   }
   // titleList.innerHTML = html;
-  console.log('titleList: ', titleList);
+  // console.log('titleList: ', titleList);
 
   /* Code below is placed at the end of generateTitleLinks() to be fired on each execution */
   const links = document.querySelectorAll('.titles a');
@@ -88,28 +88,44 @@ generateTitleLinks();
 
 function generateTags(){
   /* find all articles */
+  const articles = document.querySelectorAll(optArticleSelector);
 
   /* START LOOP: for every article: */
+  for (let article of articles) {
 
     /* find tags wrapper */
+    const tagList = article.querySelectorAll(optArticleTagsSelector);
 
     /* make html variable with empty string */
+    let html = '';
 
     /* get tags from data-tags attribute */
+    const articleTags = article.getAttribute('data-tags');
+    // console.log('articleTags : ', articleTags);
 
     /* split tags into array */
+    const tagArray = articleTags.split(' ');
+    console.log('tagArray : ', tagArray);
 
     /* START LOOP: for each tag */
-
+    for (let tag of tagArray) {
       /* generate HTML of the link */
+      let tagHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      console.log('tagHTML : ', tagHTML);
 
       /* add generated code to html variable */
-
-    /* END LOOP: for each tag */
+      html = html + ' ' + tagHTML;
+      /* END LOOP: for each tag */
+    }
+    console.log('html : ', html);
 
     /* insert HTML of all the links into the tags wrapper */
-
+    tagList.forEach(element => {
+      element.insertAdjacentHTML('beforeend', html);
+    });
+    console.log('tagList : ', tagList);
+  }
   /* END LOOP: for every article: */
 }
 
-// generateTags();
+generateTags();
