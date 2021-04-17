@@ -136,37 +136,37 @@ function tagClickHandler(event){
   event.preventDefault();
   //^ make new constant named "clickedElement" and give it the value of "this"
   const clickedElement = this;
-  clickedElement.classList.add('active');  //todo: testing. remove later
-  console.log('clickedElement : ', clickedElement);
+  //// console.log('clickedElement : ', clickedElement);
   //^ make a new constant "href" and read the attribute "href" of the clicked element
   const href = clickedElement.getAttribute('href');
-  console.log('href : ', href);
+  ////console.log('href : ', href);
   //^ make a new constant "tag" and extract tag from the "href" constant
   const tag = href.substr(5);
-  console.log('cutout tag : ', tag);
+  //or: const tag = href.replace('#tag-', '');
+  //// console.log('cutout tag : ', tag);
 
-  //todo: find all tag links with class active
-  const activeTags = document.querySelectorAll('a.active[href^="#tag-"]');
-  ////console.log('active tags : ', activeTags);
-  //// START LOOP: for each active tag link
-  for (let activeTag of activeTags){
-    //// remove class active
+  //^ find all tag links with class active
+  const activeTagList = document.querySelectorAll('a.active[href^="#tag-"]');
+  console.log('activeTagList before : ', activeTagList);
+  //^ START LOOP: for each active tag link
+  for (let activeTag of activeTagList){
+    //^ remove class active
     activeTag.classList.remove('active');
-    //// END LOOP: for each active tag link
+    //^ END LOOP: for each active tag link
   }
   //^ find all tag links with "href" attribute equal to the "href" constant
   const clickedTagLinks = document.querySelectorAll('a[href="' + href + '"]');
   //^ START LOOP: for each found tag link
   for (let clickedTagLink of clickedTagLinks) {
-    //todo: add class active (not working. why?)
+    //? add class active (is it working?)
     clickedTagLink.classList.add('active');
     //^ END LOOP: for each found tag link
   }
   console.log('clickedTagLinks : ', clickedTagLinks);
-  console.log('active tags : ', activeTags);
+  console.log('activeTagList after: ', activeTagList);
 
   //todo: execute function "generateTitleLinks" with article selector as argument
-
+  //generateTitleLinks('[data-tags~="' + tag + '"]');
 }
 
 
