@@ -4,13 +4,15 @@
 const optArticleSelector = '.post', //article list
   optTitleSelector = '.post-title', //article title
   optTitleListSelector = '.titles', //link list
-  optArticleTagsSelector = '.post-tags .list'; //article tag list
+  optArticleTagsSelector = '.post-tags .list', //article tag list
+  optArticleAuthorSelector = '.post-author';  //? .authors .list
 
-const btnAllPosts = document.getElementById('btn-allposts');
-btnAllPosts.addEventListener('click', showAllPostsLinks);
-function showAllPostsLinks(event) {
+const buttonAllPosts = document.getElementById('btn-allposts');
+const showAllPostLinks = function (event) {
+  event.preventDefault();
   generateTitleLinks();
-}
+};
+buttonAllPosts.addEventListener('click', showAllPostLinks);
 
 
 const titleClickHandler = function (event) {
@@ -64,7 +66,6 @@ const generateTitleLinks = function(customSelector = '') {
 
     //^ find the title element. Get the title from the title element
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-
     //// console.log('articleId: ', articleId);
     //// console.log('ArticleTitle: ', articleTitle);
 
@@ -91,7 +92,7 @@ const generateTitleLinks = function(customSelector = '') {
 generateTitleLinks();
 
 
-function generateTags(){
+const generateTags = function () {
   //^ find all articles
   const articles = document.querySelectorAll(optArticleSelector);
 
@@ -129,12 +130,12 @@ function generateTags(){
     //// console.log('articleTagList : ', articleTagList);
   }
   //^ END LOOP: for every article
-}
+};
 
 generateTags();
 
 
-function tagClickHandler(event){
+const tagClickHandler = function (event) {
   //^ prevent default action for this event
   event.preventDefault();
   //^ make new constant named "clickedElement" and give it the value of "this"
@@ -152,7 +153,7 @@ function tagClickHandler(event){
   const activeTagList = document.querySelectorAll('a.active[href^="#tag-"]');
   //// console.log('activeTagList before : ', activeTagList);
   //^ START LOOP: for each active tag link
-  for (let activeTag of activeTagList){
+  for (let activeTag of activeTagList) {
     //^ remove class active
     activeTag.classList.remove('active');
     //^ END LOOP: for each active tag link
@@ -170,10 +171,10 @@ function tagClickHandler(event){
 
   //^ execute function "generateTitleLinks" with article selector as argument
   generateTitleLinks('[data-tags~="' + tag + '"]');
-}
+};
 
 
-function addClickListenersToTags(){
+const addClickListenersToTags = function () {
   //^ find all links to tags
   const tagLinks = document.querySelectorAll('a[href^="#tag-"]');
   console.log('tagLinks : ', tagLinks);
@@ -183,7 +184,23 @@ function addClickListenersToTags(){
     tagLink.addEventListener('click', tagClickHandler);
   }
   //^ END LOOP: for each link
-}
-
+};
 
 addClickListenersToTags();
+
+
+const generateAuthors = function () {
+  console.log('generateAuthors is working!');
+};
+
+generateAuthors();
+
+
+/* const authorClickHandler = function () {
+  console.log('authorClickHandler is working!');
+}; */
+
+
+/* const addClickListenersToAuthors = function () {
+  console.log('Listeners added to Authors!');
+}; */
