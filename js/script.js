@@ -7,8 +7,8 @@ const optArticleSelector = '.post', //article list
   optArticleTagsSelector = '.post-tags .list'; //article tag list
 
 const btnAllPosts = document.getElementById('btn-allposts');
-btnAllPosts.addEventListener('click', buttonTest);
-function buttonTest(event) {
+btnAllPosts.addEventListener('click', showAllPostsLinks);
+function showAllPostsLinks(event) {
   generateTitleLinks();
 }
 
