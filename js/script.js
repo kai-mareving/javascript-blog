@@ -6,12 +6,17 @@ const optArticleSelector = '.post', //article list
   optTitleListSelector = '.titles', //link list
   optArticleTagsSelector = '.post-tags .list'; //article tag list
 
+const btnAllPosts = document.getElementById('btn-allposts');
+btnAllPosts.addEventListener('click', buttonTest);
+function buttonTest(event) {
+  generateTitleLinks();
+}
+
 
 const titleClickHandler = function (event) {
   event.preventDefault();
   const clickedElement = this;
-  //// console.log('clickedElement:', clickedElement);
-
+  console.log('clickedElement:', clickedElement);
   //^ remove class 'active' from all article links
   const activeLinks = document.querySelectorAll('.titles a.active');
   for (let activeLink of activeLinks) {
@@ -39,7 +44,7 @@ const titleClickHandler = function (event) {
 
 
 const generateTitleLinks = function(customSelector = '') {
-  console.log('generateTitleLinks is working!');
+  console.log('generateTitleLinks is working! customSelector : ', customSelector);
 
   //^ remove contents of titleList
   const titleList = document.querySelector(optTitleListSelector);
@@ -47,7 +52,8 @@ const generateTitleLinks = function(customSelector = '') {
 
   //^ then for each article/ or each of the custom selected articles:
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
-  //// console.log('Articles: ', articles);
+  ////console.log('optArticleSelector : ', optArticleSelector);
+  console.log('Articles: ', articles);
 
   //^ with a loop, using a single article, we download its ID into variable and then use it to generate <li>
   //or: let html = '';
@@ -81,7 +87,6 @@ const generateTitleLinks = function(customSelector = '') {
     link.addEventListener('click', titleClickHandler);
   }
 };
-
 
 generateTitleLinks();
 
@@ -145,7 +150,7 @@ function tagClickHandler(event){
 
   //^ find all tag links with class active
   const activeTagList = document.querySelectorAll('a.active[href^="#tag-"]');
-  console.log('activeTagList before : ', activeTagList);
+  //// console.log('activeTagList before : ', activeTagList);
   //^ START LOOP: for each active tag link
   for (let activeTag of activeTagList){
     //^ remove class active
@@ -156,15 +161,15 @@ function tagClickHandler(event){
   const clickedTagLinks = document.querySelectorAll('a[href="' + href + '"]');
   //^ START LOOP: for each found tag link
   for (let clickedTagLink of clickedTagLinks) {
-    //? add class active (is it working?)
+    //^ add class active
     clickedTagLink.classList.add('active');
     //^ END LOOP: for each found tag link
   }
   console.log('clickedTagLinks : ', clickedTagLinks);
-  console.log('activeTagList after: ', activeTagList);
+  ////console.log('activeTagList after: ', activeTagList);
 
-  //todo: execute function "generateTitleLinks" with article selector as argument
-  //generateTitleLinks('[data-tags~="' + tag + '"]');
+  //^ execute function "generateTitleLinks" with article selector as argument
+  generateTitleLinks('[data-tags~="' + tag + '"]');
 }
 
 
