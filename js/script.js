@@ -38,44 +38,44 @@ const titleClickHandler = function (event) {
 };
 
 
-const generateTitleLinks = function () {
+const generateTitleLinks = function(customSelector = '') {
   console.log('generateTitleLinks is working!');
 
   //^ remove contents of titleList
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
 
-  //^ then for each article:
-  const articles = document.querySelectorAll(optArticleSelector);
+  //^ then for each article/ or each of the custom selected articles:
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);
   //// console.log('Articles: ', articles);
 
   //^ with a loop, using a single article, we download its ID into variable and then use it to generate <li>
-  //// let html = '';
+  //or: let html = '';
   for (let article of articles) {
 
-    // get the article id
+    //^ get the article id
     const articleId = article.getAttribute('id');
 
-    // find the title element & get the title from the title element
+    //^ find the title element. Get the title from the title element
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
     //// console.log('articleId: ', articleId);
     //// console.log('ArticleTitle: ', articleTitle);
 
-    // create HTML of the link & save it to a const
+    //^ create HTML of the link & save it to a const
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     //// console.log(linkHTML);
 
-    // insert link into html variable
-    //// html = html + linkHTML;
+    //^ insert link into html variable
+    //or: html = html + linkHTML;
 
-    // insert link into titleList
+    //^ insert link into titleList
     titleList.insertAdjacentHTML('beforeend', linkHTML);
   }
-  //// titleList.innerHTML = html;
+  //or: titleList.innerHTML = html;
   //// console.log('titleList: ', titleList);
 
-  // Code below is placed at the end of generateTitleLinks() to be fired on each execution
+  //! Code below is placed at the end of generateTitleLinks() to be fired on each execution
   const links = document.querySelectorAll('.titles a');
   for (let link of links) {
     link.addEventListener('click', titleClickHandler);
@@ -87,45 +87,43 @@ generateTitleLinks();
 
 
 function generateTags(){
-  // find all articles
+  //^ find all articles
   const articles = document.querySelectorAll(optArticleSelector);
 
-  // START LOOP: for every article:
+  //^ START LOOP: for every article:
   for (let article of articles) {
 
-    // find tags wrapper
+    //^ find tags wrapper
     const articleTagList = article.querySelectorAll(optArticleTagsSelector);
 
-    // make html variable with empty string
+    //^ make html variable with empty string
     let html = '';
 
-    // get tags from data-tags attribute
+    //^ get tags from data-tags attribute
     const articleTags = article.getAttribute('data-tags');
     //// console.log('articleTags : ', articleTags);
 
-    // split tags into array
+    //^ split tags into array
     const tagArray = articleTags.split(' ');
     //// console.log('tagArray : ', tagArray);
 
-    // START LOOP: for each tag
+    //^ START LOOP: for each tag
     for (let tag of tagArray) {
-      // generate HTML of the link
+      //^ generate HTML of the link
       let tagHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
       //// console.log('tagHTML : ', tagHTML);
-
-      // add generated code to html variable
+      //^ add generated code to html variable
       html = html + ' ' + tagHTML;
-      // END LOOP: for each tag
+      //^ END LOOP: for each tag
     }
     //// console.log('html : ', html);
-
-    // insert HTML of all the links into the tags wrapper
+    //^ insert HTML of all the links into the tags wrapper
     articleTagList.forEach(element => {
       element.insertAdjacentHTML('beforeend', html);
     });
     //// console.log('articleTagList : ', articleTagList);
   }
-  // END LOOP: for every article
+  //^ END LOOP: for every article
 }
 
 generateTags();
