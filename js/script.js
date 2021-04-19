@@ -1,11 +1,11 @@
 'use strict';
 
 /* GLOBAL */
-const optArticleSelector = '.post', //article list
-  optTitleSelector = '.post-title', //article title
-  optTitleListSelector = '.titles', //link list
-  optArticleTagsSelector = '.post-tags .list', //article tag list
-  optArticleAuthorSelector = '.post-author';  //? .authors .list
+const optArticleSelector = '.post', //# article list
+  optTitleSelector = '.post-title', //# article title
+  optTitleListSelector = '.titles', //# link list
+  optArticleTagsSelector = '.post-tags .list', //# article tag list
+  optArticleAuthorSelector = '.post-author';  //# author selector
 
 const buttonAllPosts = document.getElementById('btn-allposts');
 const showAllPostLinks = function (event) {
@@ -18,7 +18,7 @@ buttonAllPosts.addEventListener('click', showAllPostLinks);
 const titleClickHandler = function (event) {
   event.preventDefault();
   const clickedElement = this;
-  console.log('clickedElement:', clickedElement);
+  //> console.log('clickedElement:', clickedElement);
   //^ remove class 'active' from all article links
   const activeLinks = document.querySelectorAll('.titles a.active');
   for (let activeLink of activeLinks) {
@@ -46,7 +46,7 @@ const titleClickHandler = function (event) {
 
 
 const generateTitleLinks = function(customSelector = '') {
-  console.log('generateTitleLinks is working! customSelector : ', customSelector);
+  console.log('> generateTitleLinks is working! customSelector : ', customSelector);
 
   //^ remove contents of titleList
   const titleList = document.querySelector(optTitleListSelector);
@@ -55,7 +55,7 @@ const generateTitleLinks = function(customSelector = '') {
   //^ then for each article/ or each of the custom selected articles:
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
   ////console.log('optArticleSelector : ', optArticleSelector);
-  console.log('Articles: ', articles);
+  //> console.log('Articles: ', articles);
 
   //^ with a loop, using a single article, we download its ID into variable and then use it to generate <li>
   //or: let html = '';
@@ -166,7 +166,7 @@ const tagClickHandler = function (event) {
     clickedTagLink.classList.add('active');
     //^ END LOOP: for each found tag link
   }
-  console.log('clickedTagLinks : ', clickedTagLinks);
+  //> console.log('clickedTagLinks : ', clickedTagLinks);
   ////console.log('activeTagList after: ', activeTagList);
 
   //^ execute function "generateTitleLinks" with article selector as argument
@@ -177,7 +177,7 @@ const tagClickHandler = function (event) {
 const addClickListenersToTags = function () {
   //^ find all links to tags
   const tagLinks = document.querySelectorAll('a[href^="#tag-"]');
-  console.log('tagLinks : ', tagLinks);
+  //> console.log('tagLinks : ', tagLinks);
   //^ START LOOP: for each link
   for (let tagLink of tagLinks) {
     //^ add tagClickHandler as event listener for that link
@@ -190,7 +190,35 @@ addClickListenersToTags();
 
 
 const generateAuthors = function () {
-  console.log('generateAuthors is working!');
+  console.log('> generateAuthors is working!');
+  //^ find all articles
+  const articles = document.querySelectorAll(optArticleSelector);
+  //^ START LOOP: for every article:
+  for (let article of articles) {
+    //^ find author wrapper
+    const articleAuthorWrapper = article.querySelectorAll(optArticleAuthorSelector);
+    //// console.log('articleAuthorWrapper :', articleAuthorWrapper);
+    //* articleAuthorWrapper : NodeList(10) length: 10
+
+    //^ make html variable with empty string
+    let html = '';
+    //^ get authors from data-author attribute
+    const articleAuthor = article.getAttribute('data-author');
+    //// console.log('articleAuthor : ', articleAuthor);
+
+    //^ generate HTML of the link
+    const authorHTML = 'by <a href="#author-' + articleAuthor + '"><span>' + articleAuthor  + '</span></a>';
+    html = html + authorHTML;
+    console.log('html : ', html);
+
+    //^ insert HTML of all the links into the tags wrapper
+    articleAuthorWrapper.forEach(element => {
+      element.insertAdjacentHTML('beforeend', html);
+      //or: element.innerHTML = html;
+    });
+    //// console.log('articleAuthorWrapper :', articleAuthorWrapper);
+  }
+  //^ END LOOP: for every article
 };
 
 generateAuthors();
