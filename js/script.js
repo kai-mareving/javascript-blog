@@ -36,10 +36,8 @@ const titleClickHandler = function (event) {
 
   //^ get 'href' attribute from the clicked link
   const articleSelector = clickedElement.getAttribute('href');
-
   //^ find the correct article using the selector (value of 'href' attribute)
   const targetArticle = document.querySelector(articleSelector);
-
   //^ add class 'active' to the correct article
   targetArticle.classList.add('active');
   //// console.log('targetArticle: ', targetArticle);
@@ -48,11 +46,9 @@ const titleClickHandler = function (event) {
 
 const generateTitleLinks = function(customSelector = '') {
   console.log('> generateTitleLinks is working! customSelector : ', customSelector);
-
   //^ remove contents of titleList
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
-
   //^ then for each article/ or each of the custom selected articles:
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
   ////console.log('optArticleSelector : ', optArticleSelector);
@@ -61,22 +57,17 @@ const generateTitleLinks = function(customSelector = '') {
   //^ with a loop, using a single article, we download its ID into variable and then use it to generate <li>
   //or: let html = '';
   for (let article of articles) {
-
     //^ get the article id
     const articleId = article.getAttribute('id');
-
     //^ find the title element. Get the title from the title element
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
     //// console.log('articleId: ', articleId);
     //// console.log('ArticleTitle: ', articleTitle);
-
     //^ create HTML of the link & save it to a const
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     //// console.log(linkHTML);
-
     //^ insert link into html variable
     //or: html = html + linkHTML;
-
     //^ insert link into titleList
     titleList.insertAdjacentHTML('beforeend', linkHTML);
   }
@@ -170,18 +161,20 @@ const tagClickHandler = function (event) {
   const tag = href.substr(5);
   //or: const tag = href.replace('#tag-', '');
   //// console.log('cutout tag : ', tag);
-
   //^ find all tag links with class active
   const activeTagList = document.querySelectorAll('a.active[href^="#tag-"]');
   //// console.log('activeTagList before : ', activeTagList);
+
   //^ START LOOP: for each active tag link
   for (let activeTag of activeTagList) {
     //^ remove class active
     activeTag.classList.remove('active');
     //^ END LOOP: for each active tag link
   }
+
   //^ find all tag links with "href" attribute equal to the "href" constant
   const clickedTagLinks = document.querySelectorAll('a[href="' + href + '"]');
+
   //^ START LOOP: for each found tag link
   for (let clickedTagLink of clickedTagLinks) {
     //^ add class active
@@ -190,7 +183,6 @@ const tagClickHandler = function (event) {
   }
   //> console.log('clickedTagLinks : ', clickedTagLinks);
   ////console.log('activeTagList after: ', activeTagList);
-
   //^ execute function "generateTitleLinks" with article selector as argument
   generateTitleLinks('[data-tags~="' + tag + '"]');
 };
@@ -200,6 +192,7 @@ const addClickListenersToTags = function () {
   //^ find all links to tags
   const tagLinks = document.querySelectorAll('a[href^="#tag-"]');
   //> console.log('tagLinks : ', tagLinks);
+
   //^ START LOOP: for each link
   for (let tagLink of tagLinks) {
     //^ add tagClickHandler as event listener for that link
@@ -221,13 +214,11 @@ const generateAuthors = function () {
     //^ find author wrapper
     const articleAuthorWrapper = article.querySelectorAll(optArticleAuthorSelector);
     //// console.log('articleAuthorWrapper :', articleAuthorWrapper);
-
     //^ make html variable with empty string
     let html = '';
     //^ get authors from data-author attribute
     const articleAuthor = article.getAttribute('data-author');
     ////console.log('articleAuthor : ', articleAuthor);
-
     //^ generate HTML of the link
     const authorHTML = 'by <a href="#author-' + articleAuthor + '"><span>' + articleAuthor  + '</span></a>';
     html = html + authorHTML;
