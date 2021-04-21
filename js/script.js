@@ -84,6 +84,15 @@ const generateTitleLinks = function(customSelector = '') {
 generateTitleLinks();
 
 
+const calculateTagsParams = function (tags) {
+  console.log('> calculateTagsParams is working!');
+  // Find the smallest and largest number of occurrences
+  // Math.min(a, b, c);
+  // Math.max(a, b, c);
+  //Return these numbers as an object containing 2 keys: max and min
+};
+
+
 const generateTags = function () {
   //*[NEW] create a new variable allTags with an empty object
   let allTags = {};
@@ -129,6 +138,10 @@ const generateTags = function () {
   }
   //* [NEW] find list of tags in right column
   const tagList = document.querySelector(optTagsListSelector);
+
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams: ', tagsParams);
+
   //* [NEW] create variable for all links HTML code
   let allTagsHTML = '';
 
