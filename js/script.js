@@ -85,8 +85,6 @@ generateTitleLinks();
 
 
 const calculateTagsParams = function (tags) {
-  //> console.log('> calculateTagsParams is working!');
-
   let tagInstances = [];
   for (let tag in tags) {
     //> console.log(tag + ' used ' + tags[tag] + ' times');
