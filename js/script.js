@@ -106,12 +106,12 @@ const calculateTagsParams = function (tags) {
   //> console.log('min/max : ', tagInstanceMin, '/', tagInstanceMax);
 
   //^ Return these numbers as an object containing 2 keys: max and min
-  const tagsParams = {
+  const params = {
     min: tagInstanceMin,
     max: tagInstanceMax,
   };
 
-  return tagsParams;
+  return params;
 };
 
 
