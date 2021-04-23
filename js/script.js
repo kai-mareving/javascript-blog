@@ -85,11 +85,33 @@ generateTitleLinks();
 
 
 const calculateTagsParams = function (tags) {
-  console.log('> calculateTagsParams is working!');
-  // Find the smallest and largest number of occurrences
-  // Math.min(a, b, c);
-  // Math.max(a, b, c);
-  //Return these numbers as an object containing 2 keys: max and min
+  //> console.log('> calculateTagsParams is working!');
+
+  let tagInstances = '';
+  for (let tag in tags) {
+    //> console.log(tag + ' used ' + tags[tag] + ' times');
+    tagInstances += tags[tag]+',';
+  }
+  tagInstances = tagInstances.split(',');
+  tagInstances.pop();
+  let result = tagInstances.map(function (x) {
+    return parseInt(x, 10);
+  });
+  tagInstances = result;
+  //> console.log('tagInstances[] : ', tagInstances);
+
+  //^ Find the smallest and largest number of occurrences
+  let tagInstanceMin = Math.min.apply(null, tagInstances);
+  let tagInstanceMax = Math.max.apply(null, tagInstances);
+  //> console.log('min/max : ', tagInstanceMin, '/', tagInstanceMax);
+
+  //^ Return these numbers as an object containing 2 keys: max and min
+  const tagsParams = {
+    min: tagInstanceMin,
+    max: tagInstanceMax,
+  };
+
+  return tagsParams;
 };
 
 
