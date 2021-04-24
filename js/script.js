@@ -105,9 +105,14 @@ const calculateTagsParams = function (tags) {
 
 const calculateTagClass = function (count, params) {
   console.log('> count: ', count);
-  console.log('> params: ', params);
-  let maxCount = params.max; //console.log('macCount: ', maxCount);
-  let minCount = params.min;
+  //>console.log('> params: ', params);
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCount / normalizedMax;
+  const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
+  const className = optCloudClassPrefix + classNumber;
+  console.log(className);
+  return className;
 };
 
 
