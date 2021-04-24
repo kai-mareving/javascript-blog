@@ -127,7 +127,7 @@ body {
 }
 
 .tags li {
-  display: inline;
+  display: inline-flex;
   padding: 0 2px;
   a {
     text-decoration: none;
@@ -135,9 +135,9 @@ body {
   }
 }
 
-.tag-size-1 { font-size: 10px; color: lighten($color-blue, 35); }
-.tag-size-2 { font-size: 14px; color: lighten($color-blue, 25); }
-.tag-size-3 { font-size: 17px; color: lighten($color: $color-blue, $amount: 15); }
-.tag-size-4 { font-size: 20px; color: $color-blue; }
-.tag-size-5 { font-size: 23px; color: darken($color: $color-blue, $amount: 5); }
+.tag-size-1 { font-size: 50%; color: lighten($color-blue, 25); }
+.tag-size-2 { font-size: 75%; color: lighten($color-blue, 15); }
+.tag-size-3 { font-size: 100%; color: lighten($color-blue, 5); }
+.tag-size-4 { font-size: 125%; color: $color-blue; }
+.tag-size-5 { font-size: 150%; color: darken($color-blue, 10); }
 
