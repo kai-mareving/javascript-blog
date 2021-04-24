@@ -125,10 +125,10 @@ body {
   }
 }
 
-.tag-size-1 {
-  font-size: 6px;
-}
-.tag-size-5 {
-  font-size: 20px;
-}
+.tags li { display: inline; padding: 0 2px; }
+.tag-size-1 { font-size: 10px; }
+.tag-size-2 { font-size: 14px; }
+.tag-size-3 { font-size: 18px; }
+.tag-size-4 { font-size: 22px; }
+.tag-size-5 { font-size: 26px; }
 
