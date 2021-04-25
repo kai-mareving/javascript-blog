@@ -288,7 +288,7 @@ const generateAuthors = function () {
     //* [NEW] START LOOP: for each author in allAuthors:
     for (let author in allAuthors) {
       //* [NEW] generate code of a link and add it to allAuthorsHTML
-      allAuthorsHTML += '<li><a href="#author-' + author + '" + class="' + calculateTagClass(allAuthors[author], authorParams) + '"><span class="author-name">' + author + '</span></a></li>';
+      allAuthorsHTML += '<li><a href="#author-' + author + '" class="' + calculateTagClass(allAuthors[author], authorParams) + '"><span class="author-name">' + author + '</span></a></li>';
     }
 
     //* [NEW] add HTML from allAuthorsHTML to authorList
