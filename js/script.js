@@ -1,5 +1,12 @@
 'use strict';
 
+/* HANDLEBARS */
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+};
+
 /* GLOBAL */
 const opts = {
   articleSelector: '.post', //# article list
@@ -67,7 +74,10 @@ const generateTitleLinks = function(customSelector = '') {
     //^ find the title element. Get the title from the title element
     const articleTitle = article.querySelector(opts.titleSelector).innerHTML;
     //^ create HTML of the link & save it to a const
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    // const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    //* [HANDLEBARS]
+    const linkHTMLData = { id: articleId, title: articleTitle };
+    const linkHTML = templates.articleLink(linkHTMLData);
     //^ insert link into html variable
     //or: html = html + linkHTML;
     //^ insert link into titleList
@@ -133,9 +143,13 @@ const generateTags = function () {
     //^ START LOOP: for each tag
     for (let tag of tagArray) {
       //^ generate HTML of the link
-      let tagHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      //[OLD] let tagHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      //* [HANDLEBARS]
+      const linkHTMLData = { tag: tag };
+      const linkHTML = templates.tagLink(linkHTMLData);
       //^ add generated code to html variable
-      html = html + ' ' + tagHTML;
+      //[OLD] html = html + ' ' + tagHTML;
+      html += linkHTML;
 
       //* [NEW] check if this link is NOT already in allTags
       if(!allTags[tag]){
@@ -259,9 +273,14 @@ const generateAuthors = function () {
     let html = '';
     //^ get authors from data-author attribute
     const articleAuthor = article.getAttribute('data-author');
+    let authorDataPrep = articleAuthor.split(' ');
+    const authorHTMLData = { name: authorDataPrep[0], surname: authorDataPrep[1] };
     //^ generate HTML of the link
-    const authorHTML = 'by <a href="#author-' + articleAuthor + '"><span>' + articleAuthor  + '</span></a>';
-    html = html + authorHTML;
+    //[OLD] const authorHTML = 'by <a href="#author-' + articleAuthor + '"><span>' + articleAuthor + '</span></a>';
+    //* [HANDLEBARS]
+    //or: const authorHTMLData = { author: articleAuthor };
+    const authorHTML = templates.authorLink(authorHTMLData);
+    html += authorHTML;
 
     //* [NEW] check if this link is NOT already in allAuthors
     if(!allAuthors[articleAuthor]){

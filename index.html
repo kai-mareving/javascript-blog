@@ -14,6 +14,9 @@
           <aside class="sidebar">
             <h2 class="section-title">All posts</h2>
             <ul class="list titles">
+              <script id="template-title-links" type="text/x-handlebars-template">
+                <li><a href="#{{ articleId }}"><span>{{ articleTitle }}</span></a></li>
+              </script>
               </ul><br>
               <span id="btn-allposts"><a href="#">Show All</a></span>
             </aside>
@@ -113,7 +116,7 @@
                   </ul>
                 </div>
               </article>
-              <article class="post" id="article-7" data-tags="news code" data-author="Kitty Toebean">
+              <article class="post" id="article-7" data-tags="news code" data-author="Marion Berry">
                 <h3 class="post-title">Article 7</h3>
                 <p class="post-author"></p>
                 <div class="post-content">
@@ -184,31 +187,22 @@
               </ul>
               <h2 class="section-title">Authors</h2>
               <ul class="list authors">
-                <!-- <li>
-                  <a href="#">
-                    <span class="author-name">Kitty Toebean</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="author-name">Theo Tabby</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="author-name">George Tuxedo</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="author-name">Marion Berry</span>
-                  </a>
-                </li> -->
               </ul>
             </aside>
           </main>
         </div>
       </div>
+    <!-- HANDLEBARS TEMPLATE SCRIPTS -->
+    <script id="template-article-link" type="text/x-handlebars-template">
+      <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
+    </script>
+    <script id="template-tag-link" type="text/x-handlebars-template">
+      <li><a href="#tag-{{ tag }}"><span>{{ tag }}</span></a></li>
+    </script>
+    <script id="template-author-link" type="text/x-handlebars-template">
+      by <a href="#author-{{ name }} {{ surname }}"><span>{{ name }} {{ surname }}</span></a>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

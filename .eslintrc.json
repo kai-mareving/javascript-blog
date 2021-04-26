@@ -30,5 +30,8 @@
         "no-debugger": [
             "off"
         ]
+    },
+    "globals": {
+        "Handlebars": false
     }
 }
