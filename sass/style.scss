@@ -112,9 +112,10 @@ body {
 
 .tags, .authors {
   li {
-  display: inline-flex;
-  flex-flow: wrap;
-  padding: 0 4px;
+    display: inline-flex;
+    flex-flow: wrap;
+    padding: 0 4px;
+
     a {
       text-decoration: none;
       font-weight: bold;
@@ -122,11 +123,30 @@ body {
   }
 }
 
-.tag-size-1 { font-size: 50%; color: lighten($color-blue, 25); }
-.tag-size-2 { font-size: 75%; color: lighten($color-blue, 15); }
-.tag-size-3 { font-size: 100%; color: lighten($color-blue, 5); }
-.tag-size-4 { font-size: 125%; color: $color-blue; }
-.tag-size-5 { font-size: 150%; color: darken($color-blue, 10); }
+.tag-size-1 {
+  font-size: 50%;
+  color: lighten($color-blue, 25);
+}
+
+.tag-size-2 {
+  font-size: 75%;
+  color: lighten($color-blue, 15);
+}
+
+.tag-size-3 {
+  font-size: 100%;
+  color: lighten($color-blue, 5);
+}
+
+.tag-size-4 {
+  font-size: 125%;
+  color: $color-blue;
+}
+
+.tag-size-5 {
+  font-size: 150%;
+  color: darken($color-blue, 10);
+}
 
 /* Post */
 
