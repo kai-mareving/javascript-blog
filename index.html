@@ -202,9 +202,14 @@
     <script id="template-author-link" type="text/x-handlebars-template">
       by <a href="#author-{{ name }} {{ surname }}"><span>{{ name }} {{ surname }}</span></a>
     </script>
-    <script id="template-tagcloud-link" type="text/x-handlebars-template">
+    <script id="template-tagCloud-link" type="text/x-handlebars-template">
       {{#each tags}}
         <li><a href="#tag-{{ tag }}" class="{{ className }}">{{ tag }}</a></li>
+      {{/each}}
+    </script>
+    <script id="template-authorCloud-link" type="text/x-handlebars-template">
+      {{#each authors}}
+      <li><a href="#author-{{ author }}" class="{{ className }}"><span class="author-name">{{ author }}</span></a></li>
       {{/each}}
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
