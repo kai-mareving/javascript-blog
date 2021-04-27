@@ -17,7 +17,7 @@ const opts = {
   articleTagsSelector: '.post-tags .list', //# article tag list
   articleAuthorSelector: '.post-author',  //# author selector
   tagsListSelector: '.tags.list', //# right sidebar tag links
-  cloudClassPrefix: 'tag-size-', //# class names for tag cloud
+  cloudClassPrefix: 'cloud-size-', //# class names for tag cloud
   cloudClassCount: 5, //# num of classes for tag cloud sizing
   authorsListSelector: '.authors', //# right sidebar author links
 };
@@ -114,7 +114,7 @@ const calculateTagsParams = function (tags) {
 };
 
 
-const calculateTagClass = function (count, params) {
+const calculateCloudClass = function (count, params) {
   //// console.log('> count: ', count); console.log('> params: ', params);
   const normalizedCount = count - params.min;
   const normalizedMax = params.max - params.min;
@@ -183,12 +183,12 @@ const generateTags = function () {
   //^ START LOOP: for each tag in allTags:
   for (let tag in allTags) {
     //^ generate code of a link and add it to allTagsHTML
-    //or: allTagsHTML += '<li><a href="#tag-' + tag + '" + class="' + calculateTagClass(allTags[tag],tagsParams) + '">' + tag + '</a></li>';
+    //or: allTagsHTML += '<li><a href="#tag-' + tag + '" + class="' + calculateCloudClass(allTags[tag],tagsParams) + '">' + tag + '</a></li>';
     //*[HANDLEBARS]
     allTagsData.tags.push({
       tag: tag,
       count: allTags[tag],
-      className: calculateTagClass(allTags[tag], tagsParams)
+      className: calculateCloudClass(allTags[tag], tagsParams)
     });
   }
 
@@ -330,12 +330,12 @@ const generateAuthors = function () {
     //^ START LOOP: for each author in allAuthors:
     for (let author in allAuthors) {
       //^ generate code of a link and add it to allAuthorsHTML
-      //or: allAuthorsHTML += '<li><a href="#author-' + author + '" class="' + calculateTagClass(allAuthors[author], authorParams) + '"><span class="author-name">' + author + '</span></a></li>';
+      //or: allAuthorsHTML += '<li><a href="#author-' + author + '" class="' + calculateCloudClass(allAuthors[author], authorParams) + '"><span class="author-name">' + author + '</span></a></li>';
       //* [HANLEBARS] generate code of a link and add it to allAuthorsData
       allAuthorsData.authors.push({
         author: author,
         count: allAuthors[author],
-        className: calculateTagClass(allAuthors[author], authorParams)
+        className: calculateCloudClass(allAuthors[author], authorParams)
       });
     }
 

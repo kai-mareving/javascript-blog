@@ -123,27 +123,27 @@ body {
   }
 }
 
-.tag-size-1 {
+.cloud-size-1 {
   font-size: 50%;
   color: lighten($color-blue, 25);
 }
 
-.tag-size-2 {
+.cloud-size-2 {
   font-size: 75%;
   color: lighten($color-blue, 15);
 }
 
-.tag-size-3 {
+.cloud-size-3 {
   font-size: 100%;
   color: lighten($color-blue, 5);
 }
 
-.tag-size-4 {
+.cloud-size-4 {
   font-size: 125%;
   color: $color-blue;
 }
 
-.tag-size-5 {
+.cloud-size-5 {
   font-size: 150%;
   color: darken($color-blue, 10);
 }

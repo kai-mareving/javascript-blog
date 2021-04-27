@@ -102,27 +102,27 @@ body {
   font-weight: bold;
 }
 
-.tag-size-1 {
+.cloud-size-1 {
   font-size: 50%;
   color: #83a1e8;
 }
 
-.tag-size-2 {
+.cloud-size-2 {
   font-size: 75%;
   color: #5880e0;
 }
 
-.tag-size-3 {
+.cloud-size-3 {
   font-size: 100%;
   color: #2d5fd8;
 }
 
-.tag-size-4 {
+.cloud-size-4 {
   font-size: 125%;
   color: #2554C7;
 }
 
-.tag-size-5 {
+.cloud-size-5 {
   font-size: 150%;
   color: #1d429c;
 }
