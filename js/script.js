@@ -289,12 +289,12 @@ const generateAuthors = function () {
     const articleAuthor = article.getAttribute('data-author');
     //* [HANDLEBARS]
     //or: const authorHTMLData = { author: articleAuthor };
-    let authorDataPrep = articleAuthor.split(' ');
+    let authorPersonals = articleAuthor.split(' ');
     const authorHTMLData = {
       id: articleAuthor,
       title: articleAuthor,
-      name: authorDataPrep[0],
-      surname: authorDataPrep[1]
+      name: authorPersonals[0],
+      surname: authorPersonals[1]
     };
     //^ generate HTML of the link
     //or: const authorHTML = 'by <a href="#author-' + articleAuthor + '"><span>' + articleAuthor + '</span></a>';
@@ -320,7 +320,7 @@ const generateAuthors = function () {
     //^ find list of authors in right column
     const authorList = document.querySelector(opts.authorsListSelector);
     const authorParams = calculateAuthorParams(allAuthors);
-    //>console.log('authorParams: ', authorParams);
+    console.log('authorParams: ', authorParams);
 
     //^ create variable for all links HTML code
     //or: let allAuthorsHTML = '';
