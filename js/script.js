@@ -60,7 +60,7 @@ const titleClickHandler = function (event) {
 
 
 const generateTitleLinks = function(customSelector = '') {
-  console.log('> generateTitleLinks is working! customSelector : ', customSelector);
+  console.log('> generateTitleLinks is working! customSelector: ', customSelector);
   //^ remove contents of titleList
   const titleList = document.querySelector(opts.titleListSelector);
   titleList.innerHTML = '';
@@ -100,10 +100,10 @@ generateTitleLinks();
 const calculateTagsParams = function (tags) {
   let tagInstances = [];
   for (let tag in tags) {
-    //> console.log(tag + ' used ' + tags[tag] + ' times');
+    //// console.log(tag + ' used ' + tags[tag] + ' times');
     tagInstances.push(tags[tag]);
   }
-  //> console.log('tagInstances[] : ', tagInstances);
+  //// console.log('tagInstances[] : ', tagInstances);
   //^ Return these numbers as an object containing 2 keys: max and min
   const params = {
     min: Math.min.apply(null, tagInstances),
@@ -320,7 +320,7 @@ const generateAuthors = function () {
     //^ find list of authors in right column
     const authorList = document.querySelector(opts.authorsListSelector);
     const authorParams = calculateAuthorParams(allAuthors);
-    console.log('authorParams: ', authorParams);
+    //> console.log('authorParams: ', authorParams);
 
     //^ create variable for all links HTML code
     //or: let allAuthorsHTML = '';
